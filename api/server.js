@@ -7,7 +7,7 @@ const cors = require('cors')
 dotenv.config();
 
 
-//const authRoute = require('./routes/auth')
+const authRoute = require('./routes/auth')
 
 /*
     *connect to bd
@@ -31,7 +31,7 @@ app.use(cors())
 /*Routes middleware
     *
 */
-//app.use('/api/auth',authRoute)
+app.use('/api/auth',authRoute)
 
 
 /*

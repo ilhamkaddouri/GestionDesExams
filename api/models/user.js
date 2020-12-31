@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const userSchema = new mongoose.Schema({
-    CNE:{
+    cne:{
         type:String,
         required:true,
         max:255,
@@ -38,7 +38,7 @@ const userSchema = new mongoose.Schema({
         min:6
     },
     date:{
-        type:date,
+        type:Date,
         default:Date.now
     }
 })
