@@ -1,0 +1,44 @@
+const mongoose = require('mongoose')
+
+const userSchema = new mongoose.Schema({
+    CNE:{
+        type:String,
+        required:true,
+        max:255,
+        min:6
+    },
+    username:{
+        type:String,
+        required:true,
+        max:255,
+        min:6
+    },
+    fname:{
+        type:String,
+        required:true,
+        max:255,
+        min:6
+    },
+    lname:{
+        type:String,
+        required:true,
+        max:255,
+        min:6
+    },
+    email:{
+        type:String,
+        required:true,
+        max:255,
+        min:6
+    },
+    password:{
+        type:String,
+        required:true,
+        max:255,
+        min:6
+    },
+    date:{
+        type:date,
+        default:Date.now
+    }
+})
