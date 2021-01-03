@@ -1,28 +1,59 @@
-import React from 'react'
-import { View, Text, StyleSheet ,Image,Button,TouchableOpacity} from 'react-native'
+import React,{useState} from 'react'
+import { View, Text, StyleSheet ,Image,Button,TouchableOpacity,TextInput,ImageBackground} from 'react-native'
 import {Input} from 'react-native-elements'
-import logo from '../../shared/images/ensias-logo.png'
+import background from '../../shared/images/background1.png'
+import logo from '../../shared/images/loogo.png'
+import axios from 'axios'
 const register = ({navigation}) => {
+    const [cne,setlcne] = useState('')
+    const [lname,setlname] = useState('')
+    const [fname,setfname] = useState('')
+    const [email,setemail] = useState('')
+    const [password,setpassword] = useState('')
+     
+
+    // login =()=>{
+        
+       
+    //     console.log('hello' + ""+ fname+lname+email+password+ "cne "+cne)
+    // }
     return (
+        <ImageBackground source={background} style={{flex:1}}>
         <View style={styles.container}>
             <View style={styles.logoContainer}>
                 <Image source={logo} style={styles.imageStyle}></Image>
             </View>
             <View style={styles.inputs}>
-                    
-                    <Input style={styles.textInput} placeholder="Nom" />
-                    <Input style={styles.textInput} placeholder="Prenom" />
-                    <Input style={styles.textInput} placeholder="Email" />
-                    <Input style={styles.textInput} placeholder="Password" secureTextEntry={true}/>
-                    <Button title="Login" color="#EE352C" style={{}} onPress={()=> console.log('hello')}/>
+                    <Input style={styles.textInput} type='text' placeholder="Cne" 
+                        defaultValue={cne}  
+                        name='cne' 
+                        onChangeText={(text)=>setlcne(text)}/>
+                    <Input style={styles.textInput} type='text' placeholder="Nom" 
+                        defaultValue={fname} 
+                        name='fname' 
+                        onChangeText={(e)=>setfname(e)}/>
+                    <Input style={styles.textInput} type='text' placeholder="Prenom" 
+                        defaultValue={lname} 
+                        name='lname' 
+                        onChangeText={(e)=>setlname(e)}/>
+                    <Input style={styles.textInput} type='text' placeholder="Email" 
+                        defaultValue={email} 
+                        name='email' 
+                        onChangeText={(e)=>setemail(e)}/>
+                    <Input style={styles.textInput} type='password' placeholder="Password" secureTextEntry={true} 
+                        name='password' 
+                        defaultValue={password} 
+                        onChangeText={(e)=>setpassword(e)}/>
+                    <Button title="Login" color="#039b4f" style={{}} onPress={()=> navigation.navigate('AuthenticationStack')}/>
                 </View>   
                 <View style={styles.bottom}>
                     <Text style={{color:"#c6c6c6"}}>Already have an account ?</Text>
                     <TouchableOpacity  onPress={()=> navigation.navigate('Authentication')}>
-                        <Text title='register' style={{color:"#A9A9A9", fontWeight:'bold'}}>Login </Text>
+                        <Text title='register' style={{color:"#039b4f", fontWeight:'bold'}}>Login </Text>
                     </TouchableOpacity>
                 </View>   
         </View>
+        </ImageBackground>
     )
 }
 const styles = StyleSheet.create({

@@ -1,11 +1,28 @@
-import React from 'react'
+import React ,{useState} from 'react'
 import { View, Text, TextInput,Button ,StyleSheet,ImageBackground,Image,TouchableOpacity} from 'react-native'
 import {Input} from 'react-native-elements'
 import background from '../../shared/images/background1.png'
-import logo from '../../shared/images/ensias-logo.png'
+import logo from '../../shared/images/loogo.png'
+import axios from 'axios'
 const authentication = ({navigation}) => {
+    const [email, setemail] = useState('')
+    const [password, setpassword] = useState('')
+
+    // const login = async ()=>{
+    //     const user = {email,password}
+        
+    //     try{
+    //         const loginuser= await axios.post('http://localhost:8000/api/auth/login',user)
+    //         console.log("sucss")
+    //     }catch(err){
+    //         console.log("he error is:+"+err)
+    //     }
+    
+    // }
+
     return (
-        <View style={styles.container}>
+        <ImageBackground source={background} style={{flex:1}}>
+            <View style={styles.container}>
                 
                 <View style={styles.logoContainer}>
                     <Image source={logo} style={styles.imageStyle}></Image>
@@ -14,14 +31,14 @@ const authentication = ({navigation}) => {
               
       
                 <View style={styles.inputs}>
-                    <Input style={styles.textInput} placeholder="Email" />
-                    <Input  style={styles.textInput} placeholder="Password" secureTextEntry={true}/>
-                    <Button title="Login" color="#EE352C" onPress={()=> console.log('hello')}/>
+                    <Input style={styles.textInput} placeholder="Email" value={email} onChangeText ={(text)=> setemail(text)} />
+                    <Input  style={styles.textInput} placeholder="Password" value={password} secureTextEntry={true} onChangeText ={(text)=> setpassword(text)}/>
+                    <Button title="Login" color="#039b4f" onPress={()=> navigation.navigate('HomeScreen')}/>
                 </View>   
                 <View style={styles.bottom}>
                     <Text style={{color:"#c6c6c6"}}>Don't have an account ?</Text>
                     <TouchableOpacity  onPress={()=> navigation.navigate('Register')}>
-                        <Text title='register' style={{color:"#A9A9A9", fontWeight:'bold'}}>Register </Text>
+                        <Text title='register' style={{color:"#039b4f", fontWeight:'bold'}}>Register </Text>
                     </TouchableOpacity>
                 </View>   
 
@@ -29,12 +46,14 @@ const authentication = ({navigation}) => {
         
         </View>
         
+        </ImageBackground>
+        
     )
 }
 const styles= StyleSheet.create({
     container:{
         flex: 1,
-        backgroundColor: '#fff',
+       
         alignItems: 'center',
         justifyContent: 'center',
     },
