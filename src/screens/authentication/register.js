@@ -1,10 +1,11 @@
 import React,{useState} from 'react'
-import { View, Text, StyleSheet ,Image,Button,TouchableOpacity,TextInput,ImageBackground} from 'react-native'
+import { View, Text, StyleSheet ,Image,Button,TouchableOpacity,TextInput,ImageBackground,Alert} from 'react-native'
 import {Input} from 'react-native-elements'
 import background from '../../shared/images/background1.png'
 import logo from '../../shared/images/loogo.png'
 import {REACT_URL} from '../../constants/env.js'
 import axios from 'axios'
+import {UserContext} from '../../context/UserContext'
 const register = ({navigation}) => {
     const [cne,setlcne] = useState('')
     const [lname,setlname] = useState('')
@@ -12,7 +13,7 @@ const register = ({navigation}) => {
     const [email,setemail] = useState('')
     const [password,setpassword] = useState('')
      
-
+    
      const register =async()=>{
         
         const user = {cne,lname,fname,email,password}
@@ -20,9 +21,12 @@ const register = ({navigation}) => {
         try{
             const loginuser=  await axios.post(`${REACT_URL}auth/register`,user)
                 navigation.navigate('HomeScreen')
-             console.log("token"+JSON.stringify(loginuser.data))
+            
         }catch(err){
-
+            Alert.alert('Login error',err.response.data.msg,[
+                {text : 'Close', onPress:()=>console.log('alert closed')}
+            ])
+            
         }
 
         

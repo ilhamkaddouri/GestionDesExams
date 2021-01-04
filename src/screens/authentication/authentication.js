@@ -1,14 +1,16 @@
-import React ,{useState} from 'react'
-import { View, Text, TextInput,Button ,StyleSheet,ImageBackground,Image,TouchableOpacity} from 'react-native'
+import React ,{useState,useContext} from 'react'
+import { View, Text, TextInput,Button ,StyleSheet,ImageBackground,Image,TouchableOpacity,Alert} from 'react-native'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {Input} from 'react-native-elements'
 import background from '../../shared/images/background1.png'
 import logo from '../../shared/images/loogo.png'
 import axios from 'axios'
 import {REACT_URL} from '../../constants/env.js'
+import {UserContext} from '../../context/UserContext'
 const authentication = ({navigation}) => {
     const [email, setemail] = useState('')
     const [password, setpassword] = useState('')
-
+    //const {userData} = useContext(UserContext)
     const login =  async ()=>{
         
          const user = {email,password}
@@ -17,9 +19,19 @@ const authentication = ({navigation}) => {
              
              const loginuser=  await axios.post(`${REACT_URL}auth/login`,user)
                 navigation.navigate('HomeScreen')
-             console.log("token"+loginuser.data)
+                // userData({
+                //     token : loginuser.data.token,
+                //     user : loginuser.data.user.id
+                // })
+                const token =await AsyncStorage.getItem('@storage_Key')
+                
+             console.log("token"+token)
          }catch(err){
-             console.log("he error is:+"+err)
+            
+            Alert.alert('Login error',err.response.data.msg,[
+                {text : 'Close', onPress:()=>console.log('alert closed')}
+            ])
+            
          }
     
      }

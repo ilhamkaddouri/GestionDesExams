@@ -6,12 +6,14 @@ import Register from './src/screens/authentication/register'
 import {NavigationContainer} from '@react-navigation/native'
 import {createStackNavigator} from '@react-navigation/stack'
 import Navigation from './src/navigation/navigation'
+import {UserContext} from './src/context/UserContext'
 const Stack =  createStackNavigator()
 export default function App() {
   return (
    
-     <Navigation/>
+       <Navigation/>
    
+
   );
 }
 
