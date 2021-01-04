@@ -1,12 +1,21 @@
 import React from 'react'
-import { View, Text } from 'react-native'
-
+import { View, Text ,SafeAreaView,ImageBackground,StyleSheet} from 'react-native'
+import background from '../../../shared/images/background1.png'
 const Exams = () => {
     return (
-        <View>
-            <Text>exaaaaaaaaaaaaams</Text>
-        </View>
+        <ImageBackground source={background} style={{flex:1}}>
+            <View style={styles.container}>
+                <Text>exaaaaaaaaaaaaams</Text>
+            </View>
+        </ImageBackground>
     )
 }
+const styles= StyleSheet.create({
+    container:{
+        flex:1,
+        alignItems:'center',
+        justifyContent: 'center',
 
+    }
+})
 export default Exams

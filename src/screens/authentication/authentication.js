@@ -4,21 +4,25 @@ import {Input} from 'react-native-elements'
 import background from '../../shared/images/background1.png'
 import logo from '../../shared/images/loogo.png'
 import axios from 'axios'
+import {REACT_URL} from '../../constants/env.js'
 const authentication = ({navigation}) => {
     const [email, setemail] = useState('')
     const [password, setpassword] = useState('')
 
-    // const login = async ()=>{
-    //     const user = {email,password}
+    const login =  async ()=>{
         
-    //     try{
-    //         const loginuser= await axios.post('http://localhost:8000/api/auth/login',user)
-    //         console.log("sucss")
-    //     }catch(err){
-    //         console.log("he error is:+"+err)
-    //     }
+         const user = {email,password}
+           
+         try{
+             
+             const loginuser=  await axios.post(`${REACT_URL}auth/login`,user)
+                navigation.navigate('HomeScreen')
+             console.log("token"+loginuser.data)
+         }catch(err){
+             console.log("he error is:+"+err)
+         }
     
-    // }
+     }
 
     return (
         <ImageBackground source={background} style={{flex:1}}>
@@ -33,7 +37,7 @@ const authentication = ({navigation}) => {
                 <View style={styles.inputs}>
                     <Input style={styles.textInput} placeholder="Email" value={email} onChangeText ={(text)=> setemail(text)} />
                     <Input  style={styles.textInput} placeholder="Password" value={password} secureTextEntry={true} onChangeText ={(text)=> setpassword(text)}/>
-                    <Button title="Login" color="#039b4f" onPress={()=> navigation.navigate('HomeScreen')}/>
+                    <Button title="Login" color="#039b4f" onPress={login}/>
                 </View>   
                 <View style={styles.bottom}>
                     <Text style={{color:"#c6c6c6"}}>Don't have an account ?</Text>
@@ -74,7 +78,7 @@ const styles= StyleSheet.create({
         
     },
     textInput:{
-        
+        color:"#fff"
     },
     bottom:{
         flex:2,

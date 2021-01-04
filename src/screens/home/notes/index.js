@@ -7,7 +7,15 @@ const Stack = createStackNavigator()
 const index = () => {
     return (
         <Stack.Navigator screenOptions={{headerShown:true}}>
-            <Stack.Screen name='Notes' component={NoteScreen}></Stack.Screen>
+            <Stack.Screen options={{
+            title: 'Exams',
+            headerStyle: {
+                backgroundColor: '#8174B3',
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+                fontWeight: 'bold',
+          },}} name='Notes' component={NoteScreen}></Stack.Screen>
         </Stack.Navigator>
     )
 }

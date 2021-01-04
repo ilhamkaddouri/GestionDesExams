@@ -3,6 +3,7 @@ import { View, Text, StyleSheet ,Image,Button,TouchableOpacity,TextInput,ImageBa
 import {Input} from 'react-native-elements'
 import background from '../../shared/images/background1.png'
 import logo from '../../shared/images/loogo.png'
+import {REACT_URL} from '../../constants/env.js'
 import axios from 'axios'
 const register = ({navigation}) => {
     const [cne,setlcne] = useState('')
@@ -12,11 +13,20 @@ const register = ({navigation}) => {
     const [password,setpassword] = useState('')
      
 
-    // login =()=>{
+     const register =async()=>{
         
-       
-    //     console.log('hello' + ""+ fname+lname+email+password+ "cne "+cne)
-    // }
+        const user = {cne,lname,fname,email,password}
+        console.log(user)
+        try{
+            const loginuser=  await axios.post(`${REACT_URL}auth/register`,user)
+                navigation.navigate('HomeScreen')
+             console.log("token"+JSON.stringify(loginuser.data))
+        }catch(err){
+
+        }
+
+        
+     }
     return (
         <ImageBackground source={background} style={{flex:1}}>
         <View style={styles.container}>
@@ -44,7 +54,7 @@ const register = ({navigation}) => {
                         name='password' 
                         defaultValue={password} 
                         onChangeText={(e)=>setpassword(e)}/>
-                    <Button title="Login" color="#039b4f" style={{}} onPress={()=> navigation.navigate('AuthenticationStack')}/>
+                    <Button title="Login" color="#039b4f" style={{}} onPress={register}/>
                 </View>   
                 <View style={styles.bottom}>
                     <Text style={{color:"#c6c6c6"}}>Already have an account ?</Text>
@@ -68,7 +78,7 @@ const styles = StyleSheet.create({
         width:"100%",
        
     },
-   
+    textInput:{color:"#fff"},
     imageStyle:{
        
         width:'40%',
