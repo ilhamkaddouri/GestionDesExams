@@ -3,18 +3,28 @@ const User = require('../models/user')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
+const { check, validationResult } = require('express-validator');
 router.get('/',()=>{
 
 })
 
-router.post('/register',async (req,res)=>{
+router.post('/register',[check('email').isEmail(),
+    check('cne').not().not(),check('password').isLength({min:6})
+],async (req,res)=>{
       
+    const errors = validationResult(req);
+    // if (!errors.isEmpty()) {
+    //   return res.status(400).json({ msg: errors});
+    // }
+
     const  email = req.body.email
     
     const password = req.body.password
     const exituser = await User.findOne({email: email})
     
-    if (exituser) {return res.status(400).json({emilnotfound:'email already exists'})}
+    
+    try{
+        if (exituser) {return res.status(400).json({msg:'email already exists'})}
     if(!email || !password) return res.status(400).json({msg:'email and password are required'})
 
     /* hashing the password */
@@ -27,11 +37,10 @@ router.post('/register',async (req,res)=>{
         email : email,
         password : hashedpass,
     })
-    try{
         const savedUser = await user.save()
         res.send({user : savedUser._id})
     }catch(err){
-        res.status(400).json({error : err})
+        res.status(400).json({msg : err})
     }
 
 
@@ -39,18 +48,29 @@ router.post('/register',async (req,res)=>{
 })
 
 router.post('/login',async (req,res)=>{
-    //getting required daata
-    const email = req.body.email
+    try{
+        const email = req.body.email
     const password = req.body.password
 
     const user = await User.findOne({email :  email})
-    if(!user) return res.send('email does not exists')
+    if(!user) return res.status(400).json({msg:'email does not exists'})
 
     const validpass = await bcrypt.compare(password,user.password)
-    if(!validpass) return res.send('password incorrect')
+    if(!validpass) return res.status(400).json({msg:'password incorrect'})
 
     const token = jwt.sign({_id : user._id},process.env.Secret)
-    res.header('token',token).send(token)
+    res.json({
+        token,
+        user:{
+            id: user._id,
+            name : user.fname
+        }
+    })
+    }catch(err){
+        res.status(500).json({ msg: err.message });
+    }
+    //getting required daata
+    
 
 
 

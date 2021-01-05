@@ -23,15 +23,17 @@ const authentication = ({navigation}) => {
                 //     token : loginuser.data.token,
                 //     user : loginuser.data.user.id
                 // })
-                const token =await AsyncStorage.getItem('@storage_Key')
+                
                 
              console.log("token"+token)
          }catch(err){
-            
-            Alert.alert('Login error',err.response.data.msg,[
-                {text : 'Close', onPress:()=>console.log('alert closed')}
-            ])
-            
+            if(err){
+                Alert.alert('Login error',err.response.data.msg,[
+                    {text : 'Close', onPress:()=>console.log('alert closed')}
+                ])
+                
+            }
+           
          }
     
      }

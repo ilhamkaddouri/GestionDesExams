@@ -8,7 +8,7 @@ const index = () => {
     return (
         <Stack.Navigator screenOptions={{headerShown:true}}>
             <Stack.Screen options={{
-            title: 'Exams',
+            title: 'Notes',
             headerStyle: {
                 backgroundColor: '#8174B3',
             },
