@@ -18,7 +18,10 @@ const authentication = ({navigation}) => {
          try{
              
              const loginuser=  await axios.post(`${REACT_URL}auth/login`,user)
-                navigation.navigate('HomeScreen')
+                navigation.navigate('HomeScreen',{
+                    userData : loginuser.data.user.id,
+                    token : loginuser.data.token
+                })
                 // userData({
                 //     token : loginuser.data.token,
                 //     user : loginuser.data.user.id
