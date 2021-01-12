@@ -20,10 +20,10 @@ const register = ({navigation}) => {
         console.log(user)
         try{
             const loginuser=  await axios.post(`${REACT_URL}auth/register`,user)
-                navigation.navigate('HomeScreen')
+                navigation.navigate('Authentication')
             
         }catch(err){
-            Alert.alert('Login error',err.response.data.msg,[
+            Alert.alert('Register error',err.response.data.msg,[
                 {text : 'Close', onPress:()=>console.log('alert closed')}
             ])
             
@@ -87,6 +87,7 @@ const styles = StyleSheet.create({
        
         width:'40%',
         height:'60%',
+        flex : 1
 
     },inputs:{
         flex:3,

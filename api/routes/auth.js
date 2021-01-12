@@ -18,15 +18,18 @@ router.post('/register',[check('email').isEmail(),
     // }
 
     const  email = req.body.email
-    
+    const cne = req.body.cne
+    const fname= req.body.fname
+    const lname = req.body.lname
     const password = req.body.password
     const exituser = await User.findOne({email: email})
     
     
     try{
         if (exituser) {return res.status(400).json({msg:'email already exists'})}
-    if(!email || !password) return res.status(400).json({msg:'email and password are required'})
-
+        if(!email || !password) return res.status(400).json({msg:'email and password are required'})
+        if(password.length<6) return res.status(400).json({msg:'password should be of length at lest 6'})
+        if(!fname || !lname) return res.status(400).json({msg:'first and last name are required'})
     /* hashing the password */
     const salt = await bcrypt.genSalt(10)
     const hashedpass = await bcrypt.hash(password,salt)
