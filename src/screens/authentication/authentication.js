@@ -52,7 +52,7 @@ const authentication = ({navigation}) => {
               
       
                 <View style={styles.inputs}>
-                    <Input style={styles.textInput} placeholder="Email" value={email} onChangeText ={(text)=> setemail(text)} />
+                    <Input style={styles.textInput} type='email' placeholder="Email" value={email} onChangeText ={(text)=> setemail(text)} />
                     <Input  style={styles.textInput} placeholder="Password" value={password} secureTextEntry={true} onChangeText ={(text)=> setpassword(text)}/>
                     <Button title="Login" color="#039b4f" onPress={login}/>
                 </View>   

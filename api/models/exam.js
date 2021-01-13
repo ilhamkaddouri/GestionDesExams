@@ -6,17 +6,14 @@ const ExamSchema = new mongoose.Schema({
         required : true,
         
     },
-    matiere:[
-        {   
-            type: mongoose.Schema.Types.ObjectId,
-            ref : 'matiere'
-        
-        }
-
-    ],
+    professeur:
+    {
+        type: mongoose.Schema.Types.ObjectId,
+        ref : 'professeur'
+    },
     date :{
         type : Date,
-        default : Date.now
+        required : true
     }
 })
 

@@ -50,7 +50,7 @@ const register = ({navigation}) => {
                         defaultValue={lname} 
                         name='lname' 
                         onChangeText={(e)=>setlname(e)}/>
-                    <Input style={styles.textInput} type='text' placeholder="Email" 
+                    <Input style={styles.textInput} type='email' placeholder="Email" 
                         defaultValue={email} 
                         name='email' 
                         onChangeText={(e)=>setemail(e)}/>
