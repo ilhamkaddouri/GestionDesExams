@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const UserSchema = new mongoose.Schema({
-    cne:{
+    cnp:{
         type:String,
         min: 10,
         required:true
@@ -37,8 +37,8 @@ const UserSchema = new mongoose.Schema({
     },
     status:{
         type: String,
-        default:'student'
+        default:'prof'
     }
 })
 
-module.exports = mongoose.model('User',UserSchema)
+module.exports = mongoose.model('professeur',UserSchema)

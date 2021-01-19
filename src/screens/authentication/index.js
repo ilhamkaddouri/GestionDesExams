@@ -4,6 +4,8 @@ import {NavigationContainer} from '@react-navigation/native'
 import {createStackNavigator} from '@react-navigation/stack'
 import Authentication from '../authentication/authentication'
 import Register from '../authentication/register'
+import RegisterProf from '../authentication/registerprof'
+import AuthenticationProf from './authprof'
 const Stack = new createStackNavigator()
 const index = () => {
     return (
@@ -15,6 +17,14 @@ const index = () => {
                <Stack.Screen
                name="Register"
                component={Register}
+               />
+                <Stack.Screen
+               name="AuthProf"
+               component={AuthenticationProf}
+               />
+                <Stack.Screen
+               name="RegisterProf"
+               component={RegisterProf}
                />
            </Stack.Navigator>
        

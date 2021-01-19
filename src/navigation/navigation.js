@@ -3,6 +3,7 @@ import { View, Text } from 'react-native'
 import {NavigationContainer} from '@react-navigation/native'
 import {createStackNavigator} from '@react-navigation/stack'
 import HomeScreen from '../screens/home/index'
+import HomePScreen from '../screens/prfesseurHome/index'
 import AuthenticationStackScreen from '../screens/authentication/index'
 const Stack = createStackNavigator()
 const navigation = () => {
@@ -12,6 +13,7 @@ const navigation = () => {
                 <Stack.Screen name='AuthenticationStack' component={AuthenticationStackScreen}/> 
 
                <Stack.Screen name='HomeScreen' component={HomeScreen}/>
+               <Stack.Screen name='HomePScreen' component={HomePScreen}/>
            </Stack.Navigator>
        </NavigationContainer>
     )

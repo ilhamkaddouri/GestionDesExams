@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const Exam = require('../models/note')
+const Note = require('../models/note')
 router.get('/all/:userid',async (req,res) =>{
     try{
         const exams = await Exam.find({user : userid})
@@ -9,6 +9,21 @@ router.get('/all/:userid',async (req,res) =>{
     }
 })
 
-router.post('/add',async (req,res)=>{
-    const {}
+router.post('/add',verify,async (req,res)=>{
+    const exam = req.body.exam,
+    const user = req.user._id
+    const date = req.body.date
+
+    const note = new Note({
+        exam,
+        user,
+        date
+    })
+
+    try{
+        const savedNote = note.save()
+        res.send(savedNote)
+    }catch(err){
+        res.status(500).json({msg:err})
+    }
 })

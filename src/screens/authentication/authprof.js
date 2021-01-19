@@ -6,8 +6,7 @@ import background from '../../shared/images/background1.png'
 import logo from '../../shared/images/loogo.png'
 import axios from 'axios'
 import {REACT_URL} from '../../constants/env.js'
-import {UserContext} from '../../context/UserContext'
-const authentication = ({navigation}) => {
+const authprof = ({navigation}) => {
     const [email, setemail] = useState('')
     const [password, setpassword] = useState('')
     //const {userData} = useContext(UserContext)
@@ -17,10 +16,10 @@ const authentication = ({navigation}) => {
            
          try{
              
-             const loginuser=  await axios.post(`${REACT_URL}auth/login`,user)
-             
-                navigation.navigate('HomeScreen',{
-                    userData : loginuser.data.user.id,
+             const loginuser=  await axios.post(`${REACT_URL}auth/login/prof`,user)
+             console.log(loginuser.data)
+                navigation.navigate('HomePScreen',{
+                    userData : loginuser.data.prof.id,
                     token : loginuser.data.token
                 })
                 // userData({
@@ -59,12 +58,10 @@ const authentication = ({navigation}) => {
                 </View>   
                 <View style={styles.bottom}>
                     <Text style={{color:"#c6c6c6"}}>Don't have an account ?</Text>
-                    <TouchableOpacity  onPress={()=> navigation.navigate('Register')}>
-                        <Text title='register' style={{color:"#039b4f", fontWeight:'bold'}}>Register as Student</Text>
+                    <TouchableOpacity  onPress={()=> navigation.navigate('RegisterProf')}>
+                        <Text title='register' style={{color:"#039b4f", fontWeight:'bold'}}>Register </Text>
                     </TouchableOpacity>
-                    <TouchableOpacity  onPress={()=> navigation.navigate('AuthProf')}>
-                        <Text title='registerprof' style={{color:"#039b4f", fontWeight:'bold'}}>Login as Teacher</Text>
-                    </TouchableOpacity>
+                    
                 </View>   
 
        
@@ -122,4 +119,4 @@ const styles= StyleSheet.create({
     },
 
 })
-export default authentication
+export default authprof
