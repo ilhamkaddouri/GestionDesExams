@@ -5,7 +5,7 @@ import {UserContext} from '../../../context/UserContext'
 
 const Exams = () => {
   const user_data = useContext(UserContext)
-  console.log(user_data.userData.user);
+  console.log("user"+user_data.userData.user);
 
     return (
         <ImageBackground source={background} style={{flex:1}}>

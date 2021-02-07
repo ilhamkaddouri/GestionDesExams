@@ -187,4 +187,14 @@ router.post('/login/prof',async (req,res)=>{
 
 })
 
+
+router.get('/user/:userid',async (req,res)=>{
+    try{
+        const user = await User.findById(req.params.userid)
+        res.send(user)
+    }catch(err){
+        res.status(500).json({msg:err.message})
+    }
+})
+
 module.exports = router
