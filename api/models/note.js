@@ -5,9 +5,13 @@ const NoteSchema = new mongoose.Schema({
         type :  mongoose.Schema.Types.ObjectId,
         ref :'exam'
     },
-    user:{
+    prof:{
         type : mongoose.Schema.Types.ObjectId,
-        ref:'user'
+        ref:'prof'
+    },
+    noteurl:{
+        type : String,
+        required: true
     }
 })
 
