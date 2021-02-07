@@ -2,13 +2,15 @@ import React,{useState} from 'react'
 import { View, Text ,StyleSheet,Button} from 'react-native'
 import {Picker} from '@react-native-picker/picker';
 import {Input} from 'react-native-elements'
+import DateTimePickerModal from "react-native-modal-datetime-picker";
 import DateTimePicker from '@react-native-community/datetimepicker';
 
 
 const professeurHome = () => {
-    const [date, setDate] = useState(new Date(1598051730000));
+    const [date, setDate] = useState(new Date());
     const [mode, setMode] = useState('date');
     const [show, setShow] = useState(false);
+    const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
   
     const onChange = (event, selectedDate) => {
       const currentDate = selectedDate || date;
@@ -23,6 +25,7 @@ const professeurHome = () => {
   
     const showDatepicker = () => {
       showMode('date');
+      
     };
   
     const showTimepicker = () => {
@@ -32,7 +35,19 @@ const professeurHome = () => {
     const addExam = ()=>{
 
     }
-
+    const showDatePicker = () => {
+      setDatePickerVisibility(true);
+    };
+  
+    const hideDatePicker = () => {
+      setDatePickerVisibility(false);
+    };
+  
+    const handleConfirm = (date) => {
+      console.warn("A date has been picked: ", date);
+      setDate(date)
+      hideDatePicker();
+    };
     const [label,setLabel]=useState()
     const [language,setLanguage]= useState('exam label')
     return (
@@ -50,13 +65,15 @@ const professeurHome = () => {
                     <Picker.Item label="Web semantique" value="js" />
                     </Picker>
                     <View>
-                      
-                        <Button onPress={showDatepicker} title="Show date picker!" />
-                    </View>
-                    <View>
-                       
-                        <Button onPress={showTimepicker} title="Show time picker!" />
-                    </View>
+                    <Button title="Show Date Picker" onPress={showDatePicker} />
+                    <Text>time </Text>
+                  <DateTimePickerModal
+                    isVisible={isDatePickerVisible}
+                    mode="date"
+                    onConfirm={handleConfirm}
+                    onCancel={hideDatePicker}
+                  />
+                </View>
                     <View>
                         <Button onPress={addExam} title="add an exam" />
                     </View>
