@@ -26,6 +26,11 @@ const professeurHome = () => {
     const showTimepicker = () => {
       showMode('time');
     };
+
+    const addExam = ()=>{
+
+    }
+
     const [label,setLabel]=useState()
     const [language,setLanguage]= useState('exam label')
     return (
@@ -43,11 +48,15 @@ const professeurHome = () => {
                     <Picker.Item label="Web semantique" value="js" />
                     </Picker>
                     <View>
-
+                      
                         <Button onPress={showDatepicker} title="Show date picker!" />
                     </View>
                     <View>
+                       
                         <Button onPress={showTimepicker} title="Show time picker!" />
+                    </View>
+                    <View>
+                        <Button onPress={addExam} title="add an exam" />
                     </View>
       {show && (
         <DateTimePicker
