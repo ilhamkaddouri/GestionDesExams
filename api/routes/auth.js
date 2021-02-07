@@ -5,9 +5,44 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
 const { check, validationResult } = require('express-validator');
-router.get('/',()=>{
 
-})
+// router.get('/',async (req, res)=>{
+//     res.send(req.user._id);
+// });
+
+router.post("/verifytoken", async (req, res) => {
+    try {
+      const token = req.header("auth-token");
+      if (!token)
+        return res
+          .status(401)
+          .json({ msg: "No authentication token, authorization denied." });
+  
+      const verified = jwt.verify(token, process.env.TOKEN_SECRET);
+      if (!verified)
+        return res
+          .status(401)
+          .json({ msg: "Token verification failed, authorization denied." });
+  
+      req.user = verified;
+      res.send(req.user._id);
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+  
+
+
+router.get("/",async (req, res) => {
+    const user = await User.findById(req.user);
+    res.json(
+        {
+            // username : user.username,
+            id : user._id,
+        }
+    );
+    // res.send(req.user._id);
+  });
 
 router.post('/register',[check('email').isEmail(),
     check('cne').not().not(),check('password').isLength({min:6})
@@ -60,7 +95,7 @@ router.post('/register/prof',[check('email').isEmail(),
     //   return res.status(400).json({ msg: errors});
     // }
 
-    const  email = req.body.email
+    const email = req.body.email
     const cnp = req.body.cnp
     const fname= req.body.fname
     const lname = req.body.lname
@@ -96,7 +131,7 @@ router.post('/register/prof',[check('email').isEmail(),
 router.post('/login',async (req,res)=>{
     try{
         const email = req.body.email
-    const password = req.body.password
+        const password = req.body.password
 
     const user = await User.findOne({email :  email})
     if(!user) return res.status(400).json({msg:'email does not exists'})
@@ -112,6 +147,7 @@ router.post('/login',async (req,res)=>{
             name : user.fname
         }
     })
+    
     }catch(err){
         res.status(500).json({ msg: err.message });
     }

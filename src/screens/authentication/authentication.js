@@ -11,25 +11,33 @@ const authentication = ({navigation}) => {
     const [email, setemail] = useState('')
     const [password, setpassword] = useState('')
     //const {userData} = useContext(UserContext)
+    const { setUserData } = useContext(UserContext);
+
     const login =  async ()=>{
         
          const user = {email,password}
            
          try{
              
-             const loginuser=  await axios.post(`${REACT_URL}auth/login`,user)
+             const loginuser=  await axios.post(`${REACT_URL}auth/login`,user);
              
+             console.log(loginuser.data.user.name);
                 navigation.navigate('HomeScreen',{
                     userData : loginuser.data.user.id,
                     token : loginuser.data.token
                 })
+                 setUserData({
+                    token: loginuser.data.token,
+                    user: loginuser.data.user.id,
+                });
                 // userData({
                 //     token : loginuser.data.token,
                 //     user : loginuser.data.user.id
                 // })
+                AsyncStorage.setItem("auth-token", loginuser.data.token);
                 
+
                 
-             console.log("token"+token)
          }catch(err){
             if(err){
                 Alert.alert('Login error',err.response.data.msg,[

@@ -15,7 +15,9 @@ const index = () => {
             headerTintColor: '#fff',
             headerTitleStyle: {
                 fontWeight: 'bold',
-          },}} name='Profile' component={ProfileScreen}></Stack.Screen>
+          },}} name='Profile' component={ProfileScreen}>
+              
+          </Stack.Screen>
         </Stack.Navigator>
     )
 }
