@@ -1,109 +1,130 @@
 import React,{useState,useContext,useEffect} from 'react'
-import { View, Text ,StyleSheet,Image, TouchableOpacity, Linking} from 'react-native'
-import { Divider, Button,Icon } from 'react-native-elements';
-import {Card} from 'react-native-shadow-cards';
+import { StyleSheet, Text, View, Image } from 'react-native';
+import {Button,Title ,Icon,Header,Left, Body  } from 'native-base';
 import { UserContext } from '../../../context/UserContext'
 import {REACT_URL} from '../../../constants/env.js'
+import img from '../../../shared/images/avatar.png'
 import axios from "axios"
 const Profile = () => {
     const user_data = useContext(UserContext)
     const id = user_data.userData.user;
     const [user,setUser] = useState()
     useEffect(() => {
-        axios.get(`${REACT_URL}auth/user/`+id).then(res=> { setUser(res.data) ;console.log(res.data)}).catch(err=>console.log(err))
+        axios.get(`${REACT_URL}auth/user/`+id).then(res=> { setUser(res.data) ;console.log(user)}).catch(err=>console.log(err))
     }, [])
     return (
-        <View>
-          <Card style={styles.card} elevation={15} cornerRadius={15} onPress={() => displayProfile(user.key)}>
-                    <View style={styles.avatar}>
-                        <Image style={styles.image} />
-                    </View>
-                    {/* <TouchableOpacity style={styles.info} onPress={() => displayProfile(user.key,user.Rating)}>
-                        <Text adjustsFontSizeToFit={true} style={styles.name}> {user.lname}</Text>
-                        <Text style={styles.metier}>{user.email}</Text>
-                        <View style={styles.distances}>
-                            <Icon name="location" size={18} type="evilicon"/>
-                            <Text style={styles.distance_txt}> Km loin</Text>
-                        </View>
-                    </TouchableOpacity> */}
-                    <View style={styles.actions}>
-                        <View style={styles.rating}>
-                            <Icon color={"red"} size={20} name="star" type="feather"/>
-                            <Text style={styles.rate}> 3</Text>
-                        </View>
-                    </View>
-                </Card>
+        <View style={styles.main_container}>
+           
+                    
+            <View style={styles.avatar}>
+                <Image style={styles.image} source={img}/>
+            </View> 
+            <View style={{alignItems:'center'}}>
+                <Text style={styles.name}>{user.fname} {user.lname}</Text>
+            </View>
+            <View style={styles.form}>
+                
+            <Text style={styles.metier}>CNE : {user.cne}</Text>
+                <Text style={styles.metier}>Email : {user.email}</Text>
+                <Text style={styles.metier}>First Name : {user.fname}</Text>
+                <Text style={styles.metier}>Last Name : {user.lname}</Text> 
             
+            </View>
+                    
+            <View style={styles.req}>
+                <Button  style= {{marginTop: 40, width: 140, justifyContent: 'center', backgroundColor : "#e41b23"}}
+                         rounded><Text style={{fontSize:18, color:"white"}}>Modifier</Text></Button>
+            </View>
         </View>
     )
 }
 const styles=StyleSheet.create({
-
-    card:{
-        height:90,
-        marginVertical:15,
-        marginHorizontal:20,
-        flexDirection:"row",
+    main_container:{
+        flex: 1,
+        backgroundColor: '#fff',
+        justifyContent: 'center',
+        
+       
     },
-    container:{
-        marginHorizontal:20
-    },
-    avatar:{
+    rating:{
         flex:1,
-        justifyContent:"center",
-        alignItems:"center"
+        alignItems:"center",
+        justifyContent:"center"
+    },
+    services:{
+        flex:1,
+        alignItems:"center",
+        justifyContent:"center"
+    },
+    button_container:{
+        borderColor:"#72B48E",
+        borderWidth:2,
+        borderRadius:10,
+        marginRight:7,
+        marginLeft:7,
+        marginTop:10,
+        justifyContent: 'center'
+    },
+    button_title:{
+        fontSize:10,
+        fontWeight:"bold",
+        color:"#e41b23"
     },
     image:{
-        height:70,
-        width:70,
-        borderRadius:100
+        height:90,
+        width:90,
+        backgroundColor:"grey",
+        borderRadius:200,
     },
-    info:{
+    upside:{
+        flex:6,
+        flexDirection:"column"
+    },
+    downside:{
+        flex:4,
+        flexDirection:"row"
+    },
+    dev:{
+        backgroundColor:"grey",
+        height:1.2,
+        marginRight:30,
+        marginLeft:30
+       
+    },
+    avatar:{
         flex:2,
-        marginVertical:12
+        alignItems  :"center",
+        marginTop: 40
+        
     },
-    actions:{
-        flex:1,
+    infos:{
+        flex:5,
+        alignItems : "center"
+    },
+    req:{
+        flex:5,
+        marginTop : 70,
+        alignItems : 'center',
+        justifyContent:"center"
         
     },
     name:{
-        flex:2,
-        fontSize:16,
+        fontSize:19,
         fontWeight:"bold",
-        fontFamily:"sans-serif"
+        marginBottom:2,
+        alignItems : 'center',
+        justifyContent : 'center',
+        
     },
     metier:{
-        flex:1,
-        fontSize:12,
-        fontStyle:"italic",
-        paddingLeft:5,
-        color:"gray"
-    },
-    distances:{
-        flex:1,
-        flexDirection:"row",
-        alignItems:"flex-end"
-    },
-    distance_txt:{
-        fontSize:12,
-        textAlign:"left",
-        fontStyle:"italic",
-        fontWeight:"bold",
-        color:"gray"
-    },
-    rating:{
-        flexDirection:"row",
-        marginVertical:12,
-        alignItems:"flex-end"
-    },
-    rate:{
-        fontWeight:"bold",
-        fontSize:16,
-        color:"red"
-
-    }
-
-
-    
+        color:"grey",
+        fontSize : 16,
+        padding :  4,
+        marginLeft: 10
+    },form: {
+        padding: 20,
+        flex: 1,
+        marginLeft : 10
+      },
 })
 export default Profile
