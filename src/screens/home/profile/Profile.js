@@ -7,10 +7,19 @@ import img from '../../../shared/images/avatar.png'
 import axios from "axios"
 const Profile = () => {
     const user_data = useContext(UserContext)
-    const id = user_data.userData.user;
-    const [user,setUser] = useState()
+
+    // const id = user_data.userData.user;
+    const [user,setUser] = useState();
+    const [userId,setId] = useState(user_data.userData.user);
+   
+    console.log(userId);
+
     useEffect(() => {
-        axios.get(`${REACT_URL}auth/user/`+id).then(res=> { setUser(res.data) ;console.log(user)}).catch(err=>console.log(err))
+        setId(user_data.userData.user);
+        console.log(userId);
+        axios.get(`${REACT_URL}auth/user/`+userId).then(res=> 
+            { setUser(res.data) ;
+             console.log(user)}).catch(err=>console.log(err))
     }, [])
     return (
         <View style={styles.main_container}>
@@ -20,14 +29,14 @@ const Profile = () => {
                 <Image style={styles.image} source={img}/>
             </View> 
             <View style={{alignItems:'center'}}>
-                <Text style={styles.name}>{user.fname} {user.lname}</Text>
+                <Text style={styles.name}>name</Text>
             </View>
             <View style={styles.form}>
                 
             <Text style={styles.metier}>CNE : {user.cne}</Text>
                 <Text style={styles.metier}>Email : {user.email}</Text>
-                <Text style={styles.metier}>First Name : {user.fname}</Text>
-                <Text style={styles.metier}>Last Name : {user.lname}</Text> 
+                <Text style={styles.metier}>First Name : {user.fname}</Text> 
+                 <Text style={styles.metier}>Last Name : {user.lname}</Text>
             
             </View>
                     
