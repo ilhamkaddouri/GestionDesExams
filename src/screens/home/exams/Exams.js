@@ -25,7 +25,7 @@ const Exams = () => {
     return (
         <ImageBackground source={background} style={{flex:1}}>
             <View style={styles.container}>
-                <Text>Exams ^^</Text>
+                <Text>Exams ^^ all exams</Text>
                 <FlatList
                     
                     data={exams}
@@ -45,7 +45,7 @@ const styles= StyleSheet.create({
     },
     lisview:{
         
-        flex:3,
+        flex:2,
         marginTop:"8%",
      
     },
