@@ -31,8 +31,6 @@ const Profile = () => {
         //  axios.get(`${REACT_URL}auth/user/`+userId).then(res=> 
         //     {  
         //         setUser(res.data) ;
-                
-                
         //     }).catch(err=>console.log(err))
         // // console.log(stg);
         getUser();
@@ -44,7 +42,7 @@ const Profile = () => {
                 <Image style={styles.image} source={img}/>
             </View> 
             <View style={{alignItems:'center'}}>
-                <Text style={styles.name}>name</Text>
+                <Text style={styles.name}>{user.fname} {user.lname}</Text>
             </View>
             <View style={styles.form}>
                 
@@ -76,8 +74,6 @@ const styles=StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff',
         justifyContent: 'center',
-        
-       
     },
     rating:{
         flex:1,
