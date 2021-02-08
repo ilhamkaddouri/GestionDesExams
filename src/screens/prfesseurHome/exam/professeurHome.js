@@ -1,9 +1,10 @@
-import React,{useState} from 'react'
+import React,{useState, useContext} from 'react'
 import { View, Text ,StyleSheet,Button} from 'react-native'
 import {Picker} from '@react-native-picker/picker';
 import {Input} from 'react-native-elements'
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import DateTimePicker from '@react-native-community/datetimepicker';
+import {ProfContext} from '../../../context/ProfContext'
 
 
 const professeurHome = () => {
@@ -12,6 +13,10 @@ const professeurHome = () => {
     const [show, setShow] = useState(false);
     const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
   
+      //*** Context -> PROF */
+    const prof_data = useContext(ProfContext)
+    // console.log(prof_data.profData.prof)
+
     const onChange = (event, selectedDate) => {
       const currentDate = selectedDate || date;
       setShow(Platform.OS === 'ios');
