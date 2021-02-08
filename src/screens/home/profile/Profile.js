@@ -12,19 +12,34 @@ const Profile = () => {
     const [user,setUser] = useState();
     const [userId,setId] = useState(user_data.userData.user);
    
-    console.log(userId);
+    // console.log(userId);
+
+    const getUser = async ()=> {
+       let user = await axios.get(`${REACT_URL}auth/user/`+userId).then(res=> 
+            {  
+                setUser(res.data) ;
+                console.log(res.data)
+            }).catch(err=>console.log(err))
+        
+        console.log(user);
+    }
 
     useEffect(() => {
-        setId(user_data.userData.user);
-        console.log(userId);
-        axios.get(`${REACT_URL}auth/user/`+userId).then(res=> 
-            { setUser(res.data) ;
-             console.log(user)}).catch(err=>console.log(err))
+        // setId(user_data.userData.user);
+        // // console.log(userId);
+
+        //  axios.get(`${REACT_URL}auth/user/`+userId).then(res=> 
+        //     {  
+        //         setUser(res.data) ;
+                
+                
+        //     }).catch(err=>console.log(err))
+        // // console.log(stg);
+        getUser();
     }, [])
+    if(user){
     return (
-        <View style={styles.main_container}>
-           
-                    
+        <View style={styles.main_container}>     
             <View style={styles.avatar}>
                 <Image style={styles.image} source={img}/>
             </View> 
@@ -46,6 +61,15 @@ const Profile = () => {
             </View>
         </View>
     )
+}
+else{
+    return(
+        <View>
+            <Text>Waiting</Text>
+        </View>
+    )
+}
+
 }
 const styles=StyleSheet.create({
     main_container:{
