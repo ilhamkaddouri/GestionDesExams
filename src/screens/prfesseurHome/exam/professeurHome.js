@@ -1,19 +1,17 @@
 import React,{useState, useContext} from 'react'
 import { View, Text ,StyleSheet,Button} from 'react-native'
-import {Picker} from '@react-native-picker/picker';
-import {Input} from 'react-native-elements'
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import DateTimePicker from '@react-native-community/datetimepicker';
 import {ProfContext} from '../../../context/ProfContext'
+import {Input} from 'react-native-elements'
 
 
 const professeurHome = () => {
-    const [date, setDate] = useState(new Date());
-    const [mode, setMode] = useState('date');
-    const [show, setShow] = useState(false);
-    const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
-  
-      //*** Context -> PROF */
+    // const [date, setDate] = useState(new Date());
+    // const [mode, setMode] = useState('date');
+    // const [show, setShow] = useState(false);
+    // const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+        //*** Context -> PROF */
     const prof_data = useContext(ProfContext)
     // console.log(prof_data.profData.prof)
 
@@ -23,41 +21,48 @@ const professeurHome = () => {
       setDate(currentDate);
     };
   
-    const showMode = (currentMode) => {
-      setShow(true);
-      setMode(currentMode);
-    };
+     // const onChange = (event, selectedDate) => {
+    //   const currentDate = selectedDate || date;
+    //   setShow(Platform.OS === 'ios');
+    //   setDate(currentDate);
+    // };
+
   
-    const showDatepicker = () => {
-      showMode('date');
+    // const showMode = (currentMode) => {
+    //   setShow(true);
+    //   setMode(currentMode);
+    // };
+  
+    // const showDatepicker = () => {
+    //   showMode('date');
       
-    };
+    // };
   
-    const showTimepicker = () => {
-      showMode('time');
-    };
+    // const showTimepicker = () => {
+    //   showMode('time');
+    // };
 
-    const addExam = ()=>{
+    // const addExam = ()=>{
 
-    }
-    const showDatePicker = () => {
-      setDatePickerVisibility(true);
-    };
+    // }
+    // const showDatePicker = () => {
+    //   setDatePickerVisibility(true);
+    // };
   
-    const hideDatePicker = () => {
-      setDatePickerVisibility(false);
-    };
+    // const hideDatePicker = () => {
+    //   setDatePickerVisibility(false);
+    // };
   
-    const handleConfirm = (date) => {
-      console.warn("A date has been picked: ", date);
-      setDate(date)
-      hideDatePicker();
-    };
-    const [label,setLabel]=useState()
-    const [language,setLanguage]= useState('exam label')
+    // const handleConfirm = (date) => {
+    //   console.warn("A date has been picked: ", date);
+    //   setDate(date)
+    //   hideDatePicker();
+    // };
+    // const [label,setLabel]=useState()
+    // const [language,setLanguage]= useState('exam label')
     return (
         <View style={styles.container}>
-            <View style={styles.inputs}>
+            {/* <View style={styles.inputs}>
                     <Picker
                     selectedValue={language}
                     style={{height: 50, width: "80%"}}
@@ -92,7 +97,7 @@ const professeurHome = () => {
           onChange={onChange}
         />
       )}
-            </View>
+            </View> */}
         </View>
     )
 }

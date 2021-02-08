@@ -3,7 +3,7 @@ const User = require('../models/user')
 const Prof = require('../models/prof')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
-
+const verify = require('../validation/auth')
 const { check, validationResult } = require('express-validator');
 
 // router.get('/',async (req, res)=>{
@@ -161,6 +161,17 @@ router.post('/login/prof',async (req,res)=>{
 
 
 
+})
+
+
+router.get('/user/:userid',verify,async (req,res)=>{
+    try{
+    
+        const user = await User.findById(req.params.userid)
+        res.json(user)
+    }catch(err){
+        res.status(500).json({msg:err.message})
+    }
 })
 
 module.exports = router
