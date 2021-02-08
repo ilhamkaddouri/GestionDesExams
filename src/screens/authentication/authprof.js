@@ -6,28 +6,32 @@ import background from '../../shared/images/background1.png'
 import logo from '../../shared/images/loogo.png'
 import axios from 'axios'
 import {REACT_URL} from '../../constants/env.js'
+import {ProfContext} from './../../context/ProfContext'
+
 const authprof = ({navigation}) => {
     const [email, setemail] = useState('')
     const [password, setpassword] = useState('')
+    const { setProfData } = useContext(ProfContext);
+    
     //const {userData} = useContext(UserContext)
     const login =  async ()=>{
-        
+       
          const user = {email,password}
            
          try{
              
              const loginuser=  await axios.post(`${REACT_URL}auth/login/prof`,user)
-             console.log(loginuser.data)
+            //  console.log(loginuser.data.prof)
                 navigation.navigate('HomePScreen',{
                     userData : loginuser.data.prof.id,
                     token : loginuser.data.token
                 })
-                // userData({
-                //     token : loginuser.data.token,
-                //     user : loginuser.data.user.id
-                // })
+                setProfData({
+                    token : loginuser.data.token,
+                    prof : loginuser.data.prof.id
+                })
                 
-                
+             
              console.log("token"+token)
          }catch(err){
             if(err){

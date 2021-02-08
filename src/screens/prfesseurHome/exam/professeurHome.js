@@ -1,9 +1,9 @@
-import React,{useState} from 'react'
+import React,{useState, useContext} from 'react'
 import { View, Text ,StyleSheet,Button} from 'react-native'
-
+import DateTimePickerModal from "react-native-modal-datetime-picker";
+import DateTimePicker from '@react-native-community/datetimepicker';
+import {ProfContext} from '../../../context/ProfContext'
 import {Input} from 'react-native-elements'
-// import DateTimePickerModal from "react-native-modal-datetime-picker";
-// import DateTimePicker from '@react-native-community/datetimepicker';
 
 
 const professeurHome = () => {
@@ -11,12 +11,22 @@ const professeurHome = () => {
     // const [mode, setMode] = useState('date');
     // const [show, setShow] = useState(false);
     // const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+        //*** Context -> PROF */
+    const prof_data = useContext(ProfContext)
+    // console.log(prof_data.profData.prof)
+
+    const onChange = (event, selectedDate) => {
+      const currentDate = selectedDate || date;
+      setShow(Platform.OS === 'ios');
+      setDate(currentDate);
+    };
   
-    // const onChange = (event, selectedDate) => {
+     // const onChange = (event, selectedDate) => {
     //   const currentDate = selectedDate || date;
     //   setShow(Platform.OS === 'ios');
     //   setDate(currentDate);
     // };
+
   
     // const showMode = (currentMode) => {
     //   setShow(true);

@@ -13,7 +13,7 @@ const Item = ({ name,date }) => (
   );
 const Exams = () => {
   const user_data = useContext(UserContext)
-  const [exams,setExams]= useState()
+    const [exams,setExams]= useState()
   const renderItem = ({ item }) => (
     <Item name={item.name}  date={item.date} />
   );
@@ -21,6 +21,7 @@ const Exams = () => {
     useEffect(() => {
        axios.get(`${REACT_URL}exams/all`).then(res=> {setExams(res.data);console.log(exams)}).catch(err => console.log(err))
     }, [])
+
     return (
         <ImageBackground source={background} style={{flex:1}}>
             <View style={styles.container}>
