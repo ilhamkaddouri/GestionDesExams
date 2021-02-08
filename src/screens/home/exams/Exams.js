@@ -27,7 +27,6 @@ const Exams = () => {
             <View style={styles.container}>
                 <Text>Exams ^^ all exams</Text>
                 <FlatList
-                    
                     data={exams}
                     renderItem={renderItem}
                     keyExtractor={item => item.id}

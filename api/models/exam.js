@@ -6,7 +6,7 @@ const ExamSchema = new mongoose.Schema({
         required : true,
         
     },
-    professeur:
+    professeur :
     {
         type: mongoose.Schema.Types.ObjectId,
         ref : 'professeur'

@@ -156,22 +156,21 @@ router.post('/login/prof',async (req,res)=>{
     }catch(err){
         res.status(500).json({ msg: err.message });
     }
-    //getting required daata
-    
-
-
+    //getting required data
 
 })
 
 
-router.get('/user/:userid',verify,async (req,res)=>{
+router.get('/user/:userid',async (req,res)=>{
     try{
-    
-        const user = await User.findById(req.params.userid)
-        res.json(user)
+        const user = await User.findById(req.params.userid);
+        res.send(user);
     }catch(err){
         res.status(500).json({msg:err.message})
     }
+    
 })
+
+
 
 module.exports = router

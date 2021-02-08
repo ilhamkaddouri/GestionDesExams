@@ -7,15 +7,23 @@ import img from '../../../shared/images/avatar.png'
 import axios from "axios"
 const Profile = () => {
     const user_data = useContext(UserContext)
-    const id = user_data.userData.user;
-    const [user,setUser] = useState()
+
+    // const id = user_data.userData.user;
+    const [user,setUser] = useState();
+    const [userId,setId] = useState(user_data.userData.user);
+   
+    console.log(userId);
+
     useEffect(() => {
-        axios.get(`${REACT_URL}auth/user/`+id).then(res=> { setUser(res.data) ;console.log(user)}).catch(err=>console.log(err))
+        setId(user_data.userData.user);
+        console.log(userId);
+        axios.get(`${REACT_URL}auth/user/`+userId).then(res=> 
+            { setUser(res.data) ;
+             console.log(user)}).catch(err=>console.log(err))
     }, [])
     return (
         <View style={styles.main_container}>
-           
-                    
+
             <View style={styles.avatar}>
                 <Image style={styles.image} source={img}/>
             </View> 

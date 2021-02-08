@@ -1,30 +1,20 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add react-native-date-picke
+  D:\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add react-native-document-picker
 
 PATH: 
-  C:\Program Files\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\nodejs;C:\Program Files (x86)\Yarn\bin\;C:\Program Files\apache-maven-3.6.3\apache-maven\src\bin;"C:\Users\Dell XPS\Downloads\sonar-scanner-4.5.0.2216-windows\bin";C:\WINDOWS\System32\OpenSSH\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\Dell XPS\AppData\Roaming\npm;C:\Program Files\nodejs;C:\Users\Dell XPS\AppData\Local\Yarn\bin;%USERPROFILE%\AppData\Local\Microsoft\WindowsApps;
+  C:\Users\abire\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\abire\bin;C:\Program Files\Common Files\Oracle\Java\javapath;D:\IBM\ext\bin\spss.TMWBServer\bin;C:\Program Files (x86)\python\Scripts;C:\Program Files (x86)\python;E:\app\abire\product\11.2.0\dbhome_1\bin;C:\App\db_home\bin;C:\Users\abire\OneDrive\Desktop\WINDOWS.X64_193000_db_home\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\TDM-GCC-64\bin;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\dotnet;C:\Windows\System32;C:\Program Files (x86)\Microsoft SQL Server\100\Tools\Binn;C:\Program Files\Microsoft SQL Server\100\Tools\Binn;C:\Program Files\Microsoft SQL Server\100\DTS\Binn;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\130\Tools\Binn;C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn;C:\Program Files\Microsoft SQL Server\140\Tools\Binn;C:\Program Files\Microsoft SQL Server\140\DTS\Binn;C:\Program Files\Microsoft SQL Server\130\Tools\Binn;C:\wamp\bin\php\php7.2.14;C:\ProgramData\ComposerSetup\bin;C:\Program Files\Git\cmd;C:\Program Files (x86)\Java\jdk1.8.0_181\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files\OpenSSL-Win64\bin;C:\Program Files (x86)\GtkSharp\2.12\bin;C:\Users\abire\AppData\Roaming\Python\Python37\Scripts;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn;D:\nodejs;C:\Program Files (x86)\Yarn\bin;C:\Program Files\Java\jdk-11.0.9\bin;C:\Users\abire\sonarqube-8.6.0.39681\sonarqube-8.6.0.39681\sonar-scanner-cli-4.5.0.2216-windows\sonar-scanner-4.5.0.2216-windows\bin;C:\Users\abire\Anaconda2;C:\Program Files\MySQL\MySQL Shell 8.0\bin;C:\Microsoft VS Code\bin;C:\Users\abire\AppData\Roaming\Composer\vendor\bin;C:\wamp\bin\php\php7.2.14\php.exe;%USERPROFILE%\AppData\Local\Microsoft\WindowsApps;C:\Exercism;C:\Program Files\MongoDB\Server\4.4\bin;C:\Program Files\OpenSSL-Win64\bin;C:\Users\abire\AppData\Roaming\Python\Python37\Scripts;%PhpStorm%;C:\Users\abire\AppData\Roaming\npm;C:\Users\abire\AppData\Local\Yarn\bin;C:\Users\abire\AppData\Local\hyper\app-3.0.2\resources\bin;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
 
 Yarn version: 
   1.22.5
 
 Node version: 
-  14.15.0
+  14.15.1
 
 Platform: 
   win32 x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/react-native-date-picke: Not found
-      at Request.params.callback [as _callback] (C:\Program Files (x86)\Yarn\lib\cli.js:66097:18)
-      at Request.self.callback (C:\Program Files (x86)\Yarn\lib\cli.js:140749:22)
-      at Request.emit (events.js:315:20)
-      at Request.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:141721:10)
-      at Request.emit (events.js:315:20)
-      at IncomingMessage.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:141643:12)
-      at Object.onceWrapper (events.js:421:28)
-      at IncomingMessage.emit (events.js:327:22)
-      at endReadableNT (_stream_readable.js:1327:12)
-      at processTicksAndRejections (internal/process/task_queues.js:80:21)
+  Error: EPERM: operation not permitted, unlink 'D:\Desktop\iwim.S5\Dev_mobile\GestionDesExams\node_modules\@babel\plugin-external-helpers\lib'
 
 npm manifest: 
   {
@@ -39,25 +29,32 @@ npm manifest:
     "dependencies": {
       "@expo/vector-icons": "^12.0.0",
       "@react-native-async-storage/async-storage": "^1.13.2",
+      "@react-native-community/datetimepicker": "3.0.4",
       "@react-native-community/masked-view": "0.1.10",
-      "@react-native-picker/picker": "1.9.2",
+      "@react-native-community/picker": "^1.8.1",
       "@react-navigation/bottom-tabs": "^5.11.2",
       "@react-navigation/drawer": "^5.11.4",
       "@react-navigation/native": "^5.8.10",
       "@react-navigation/stack": "^5.12.8",
       "axios": "^0.21.1",
       "expo": "~40.0.0",
+      "expo-document-picker": "~8.4.1",
       "expo-status-bar": "~1.0.3",
       "express-validator": "^6.9.2",
+      "import": "0.0.6",
+      "native-base": "^2.15.2",
       "react": "16.13.1",
       "react-bootstrap": "^1.4.0",
       "react-dom": "16.13.1",
       "react-native": "https://github.com/expo/react-native/archive/sdk-40.0.1.tar.gz",
+      "react-native-document-picker": "^5.0.0",
       "react-native-elements": "^3.1.0",
       "react-native-gesture-handler": "~1.8.0",
+      "react-native-modal-datetime-picker": "^9.1.0",
       "react-native-reanimated": "~1.13.0",
       "react-native-safe-area-context": "3.1.9",
       "react-native-screens": "~2.15.0",
+      "react-native-shadow-cards": "^1.0.2",
       "react-native-vector-icons": "^7.1.0",
       "react-native-web": "~0.13.12"
     },
@@ -1397,15 +1394,27 @@ Lockfile:
       sudo-prompt "^9.0.0"
       wcwidth "^1.0.1"
   
+  "@react-native-community/datetimepicker@3.0.4":
+    version "3.0.4"
+    resolved "https://registry.yarnpkg.com/@react-native-community/datetimepicker/-/datetimepicker-3.0.4.tgz#ad3efa90fab78fc3c0710abf3cb06d2976603140"
+    integrity sha512-IsBkemz1XYubH5twfQPC/xleZdILA5SEUaLJ2C86IbnIOctb6suk8tB6uT9VxQkCsw4zjkrlqt9p9LGx9DJ97w==
+    dependencies:
+      invariant "^2.2.4"
+  
   "@react-native-community/masked-view@0.1.10":
     version "0.1.10"
     resolved "https://registry.yarnpkg.com/@react-native-community/masked-view/-/masked-view-0.1.10.tgz#5dda643e19e587793bc2034dd9bf7398ad43d401"
     integrity sha512-rk4sWFsmtOw8oyx8SD3KSvawwaK7gRBSEIy2TAwURyGt+3TizssXP1r8nx3zY+R7v2vYYHXZ+k2/GULAT/bcaQ==
   
-  "@react-native-picker/picker@1.9.2":
-    version "1.9.2"
-    resolved "https://registry.yarnpkg.com/@react-native-picker/picker/-/picker-1.9.2.tgz#c5e35f97d7982d2971ee3d74b1ba8ecf4b716627"
-    integrity sha512-eNMf5uF67CsiJ9SDzofSWKu9Gh2PDyPbCSXuUJ09tkRgcOefDx6DyQnXCOPCd+8vxC1DzJKVAgLy+s425jUIeA==
+  "@react-native-community/picker@^1.8.1":
+    version "1.8.1"
+    resolved "https://registry.yarnpkg.com/@react-native-community/picker/-/picker-1.8.1.tgz#94f14f0aad98fa7592967b941be97deec95c3805"
+    integrity sha512-Sj9DzX1CSnmYiuEQ5fQhExoo4XjSKoZkqLPAAybycq6RHtCuWppf+eJXRMCOJki25BlKSSt+qVqg0fIe//ujNQ==
+  
+  "@react-native-picker/picker@^1.9.2":
+    version "1.9.10"
+    resolved "https://registry.yarnpkg.com/@react-native-picker/picker/-/picker-1.9.10.tgz#c0d445453e91077cc85a3f0a6d0074d44d21e438"
+    integrity sha512-g0C0RLjXXGE4UfmGxNtAOY3LE5Epz8+ck/rB1oErJowskIIG83U6LVqH9oFrx1Hq1k/lbVQGgabURlE0QQ1MHA==
   
   "@react-navigation/bottom-tabs@^5.11.2":
     version "5.11.2"
@@ -2670,6 +2679,13 @@ Lockfile:
     dependencies:
       "@expo/config" "^3.3.18"
       fbjs "1.0.0"
+      uuid "^3.3.2"
+  
+  expo-document-picker@~8.4.1:
+    version "8.4.1"
+    resolved "https://registry.yarnpkg.com/expo-document-picker/-/expo-document-picker-8.4.1.tgz#20fc07328ea6155c65fdefecf4b531c6681ca004"
+    integrity sha512-/Si7pSa6dheygGhQA/Ig7XD1uLAFYJaLKXTi0V51+KmHA41F1KeAnoViUAzyKaNSV/bCu6FmiQNosN6OYAV1Hg==
+    dependencies:
       uuid "^3.3.2"
   
   expo-error-recovery@~1.4.0:
@@ -4845,6 +4861,11 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
     integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
   
+  react-native-document-picker@^5.0.0:
+    version "5.0.0"
+    resolved "https://registry.yarnpkg.com/react-native-document-picker/-/react-native-document-picker-5.0.0.tgz#15c2557edd6c3ebc129b529e52556ec378c99853"
+    integrity sha512-VL1fcYyAx5d9/JlGI3hyuZm3JRGPHAYaU6rKD2Kn3K4b11xB4NdjVvtAiRRFEwDm8BCBKxDoTXRWoGYOhtefyQ==
+  
   react-native-elements@^3.1.0:
     version "3.1.0"
     resolved "https://registry.yarnpkg.com/react-native-elements/-/react-native-elements-3.1.0.tgz#ff2d6fd0ed91b1ebdd15598c4da1fcb2d5780c5f"
@@ -4875,6 +4896,13 @@ Lockfile:
     version "1.3.1"
     resolved "https://registry.yarnpkg.com/react-native-iphone-x-helper/-/react-native-iphone-x-helper-1.3.1.tgz#20c603e9a0e765fd6f97396638bdeb0e5a60b010"
     integrity sha512-HOf0jzRnq2/aFUcdCJ9w9JGzN3gdEg0zFE4FyYlp4jtidqU03D5X7ZegGKfT1EWteR0gPBGp9ye5T5FvSWi9Yg==
+  
+  react-native-modal-datetime-picker@^9.1.0:
+    version "9.1.0"
+    resolved "https://registry.yarnpkg.com/react-native-modal-datetime-picker/-/react-native-modal-datetime-picker-9.1.0.tgz#a1286efa6d9c456e931805fd0687cf9e916af6ed"
+    integrity sha512-KwZEduMvfxp1BMQ2nMOckJCpR5Wiw+GIBazqtWm6zptNTL+iQyeYQeyjIubsMGWh4MkMueActSRWMvHut98h/Q==
+    dependencies:
+      prop-types "^15.7.2"
   
   react-native-ratings@^7.3.0:
     version "7.3.0"
