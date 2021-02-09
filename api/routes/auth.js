@@ -166,7 +166,7 @@ router.post('/login/prof',async (req,res)=>{
 
 router.get('/user/:userid',async (req,res)=>{
     try{
-        console.log(req.params.userid)
+        // console.log(req.params.userid)
         const user = await User.findById(req.params.userid)
          res.send(user)
     }catch(err){
@@ -207,5 +207,16 @@ router.put('/updateprof/:profid',async (req,res)=>{
         res.status(500).send({text:err})
     }
 })
+
+router.get('/all',async (req,res)=>{
+    try{
+         const users =  await User.find()
+         res.send(users)
+        // console.log(users);
+    }catch(err){
+         res.status(500).json({msg : err})
+    }
+})
+
 
 module.exports = router

@@ -1,5 +1,4 @@
 const router = require('express').Router()
-
 const Exam = require('../models/exam')
 const verify = require("../validation/verifyprof")
 router.post('/',(req,res)=>{
