@@ -12,8 +12,12 @@ const ExamSchema = new mongoose.Schema({
         ref : 'professeur'
     },
     date :{
-        type : Date,
+        type : String,
         required : true
+    },
+    time:{
+        type: String,
+        required: true
     }
 })
 

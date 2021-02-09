@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text } from 'react-native'
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import { Ionicons } from '@expo/vector-icons';
-import ProfileStack from '../home/profile/index'
+import ProfileStack from '../prfesseurHome/profile/index'
 import ExamStack from '../prfesseurHome/exam/index' 
 import ExamsStack from '../prfesseurHome/exams/index'
 const Tab = createBottomTabNavigator()

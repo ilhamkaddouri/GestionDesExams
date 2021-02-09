@@ -5,17 +5,18 @@ import {UserContext} from '../../../context/UserContext'
 import axios from 'axios'
 import {REACT_URL} from '../../../constants/env'
 
-const Item = ({ name,date }) => (
+const Item = ({ name,date,time }) => (
     <View style={styles.item}>
       <Text style={styles.title}>{name}</Text>
       <Text style={styles.note}>{date}</Text>
+      <Text style={styles.note}>{time}</Text>
     </View>
   );
 const Exams = () => {
   const user_data = useContext(UserContext)
     const [exams,setExams]= useState()
   const renderItem = ({ item }) => (
-    <Item name={item.name}  date={item.date} />
+    <Item name={item.name}  date={item.date} time={item.time}/>
   );
   console.log("user"+user_data.userData.user);
     useEffect(() => {

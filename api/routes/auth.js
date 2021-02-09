@@ -173,5 +173,39 @@ router.get('/user/:userid',async (req,res)=>{
         res.status(500).json({msg:err.message})
     }
 })
+router.get('/prof/:profid',async (req,res)=>{
+    try{
+        console.log(req.params.profid)
+        const prof = await Prof.findById(req.params.profid)
+         res.send(prof)
+    }catch(err){
+        res.status(500).json({msg:err.message})
+    }
+})
+
+router.put('/updateuser/:userid',async (req,res)=>{
+    const user = await User.findById(req.params.userid)
+    try{
+       
+        if(!user) return res.json({ msg: "question no found" });
+        Object.assign(user, req.body);
+        await user.save()
+        res.json({ msg: "profile updated" });
+    }catch(err){
+        res.status(500).send({text:err})
+    }
+})
+router.put('/updateprof/:profid',async (req,res)=>{
+    const prof = await Prof.findById(req.params.profid)
+    try{
+       
+        if(!prof) return res.json({ msg: "question no found" });
+        Object.assign(prof, req.body);
+        await prof.save()
+        res.json({ msg: "profile updated" });
+    }catch(err){
+        res.status(500).send({text:err})
+    }
+})
 
 module.exports = router
