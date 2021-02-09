@@ -30,8 +30,8 @@ const updateProfile = ({navigation}) => {
         const newprof = {fname,lname,email}
         axios.put(`${REACT_URL}auth/updateprof/`+profId,newprof).then(res=> 
             {  
-                setProf(res.data) ;
-                console.log(res.data)
+                setProf(newprof) ;
+                
             }).catch(err=>console.log(err))
     }
 
