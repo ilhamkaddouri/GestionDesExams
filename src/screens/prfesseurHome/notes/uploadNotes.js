@@ -1,6 +1,8 @@
 import FilePickerManager from 'react-native-file-picker';
 import React,{useContext, useState, useEffect} from 'react'
-import { View, Text, TextInput ,StyleSheet, FlatList, ImageBackground, Button} from 'react-native'
+import { Input } from 'react-native-elements';
+
+import { View,Text, TextInput ,StyleSheet, FlatList, ImageBackground, Button} from 'react-native'
 import {ProfContext} from '../../../context/ProfContext'
 import ImagePicker from 'react-native-image-picker';
 import axios from 'axios'
@@ -10,17 +12,22 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
 const Item = ({ email,lname,fname }) => (
-    <TouchableOpacity style={styles.item} onPress={()=>{}}>
-      <Text style={styles.note}>Name : {lname} {fname} </Text>
-
+    <TouchableOpacity style={styles.item}>
+      <Text style={styles.title}>Name :</Text> 
+      <Text style={styles.title_name}>{lname} {fname}  </Text>
       <Text style={styles.note}>Email : {email}</Text>
+
+      
       {/* <Text style={styles.note}>{date}</Text> */}
     {/* <Button title='Add mark'> </Button> */}
     <Text>
     Note :
-    <TextInput autoCompleteType='cc-exp-year'> </TextInput>
-
     </Text>
+    {/* <TextInput autoCompleteType='cc-exp-year'
+     style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+    > </TextInput> */}
+    <Input style={styles.metier}/>
+    
     </TouchableOpacity>
   );
 
@@ -37,8 +44,6 @@ const uploadNotes = () => {
         date={item.date} 
         fname={item.fname}
         lname={item.lname}
-
-
         />
       );
 
@@ -83,34 +88,47 @@ const uploadNotes = () => {
 
 
 const styles= StyleSheet.create({
-    container:{
-        flex:1,
-        alignItems:'center',
-        justifyContent: 'center',
-
+  container: {
+      flex: 1,
+      
     },
     lisview:{
-        
-        flex:2,
-        marginTop:"8%",
-     
+      
+          flex:3,
+          marginTop:"8%",
+       
+      },
+    hometitle:{
+        textAlign : "center",
+        fontSize : 18,
+        color : "#fff"
     },
-  hometitle:{
-      textAlign : "center",
-      fontSize : 18,
-      color : "#fff"
-  },
-  item: {
-    backgroundColor: '#fff',
-    padding: 20,
-    marginVertical: 8,
-    marginHorizontal: 16,
-    width:'100%',
-  },
-  title: {
-    fontSize: 19,
-    color :'#97D4A8',
-    fontWeight :'bold'
-  },
+    item: {
+      backgroundColor: '#fff',
+      padding: 20,
+      marginVertical: 8,
+      marginHorizontal: 16,
+    },
+    title: {
+      fontSize: 13,
+      color :'#97D4A8',
+      fontWeight :'bold'
+    },
+    title_name:{
+      fontSize: 18,
+      color: '#97D4A8',
+      textAlign: 'center'
+    },
+
+    text:{
+        color:"black",
+        fontWeight:'bold'
+    },
+    metier:{
+      color:"grey",
+      fontSize : 20,
+      padding :  4,
+      marginLeft: 10
+  }
 })
 export default uploadNotes

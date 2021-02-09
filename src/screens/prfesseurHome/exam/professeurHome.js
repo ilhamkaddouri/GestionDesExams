@@ -30,7 +30,7 @@ const professeurHome = () => {
              date
         }
         
-              axios.post('http://192.168.43.239:8000/api/exams/exam',exam,{
+              axios.post('http://192.168.1.106:8000/api/exams/exam',exam,{
                 headers: { "token": prof_data.profData.token },
               }).then(res=>{console.log(res.data)}).catch(err=> console.log(err))
             
