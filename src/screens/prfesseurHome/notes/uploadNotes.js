@@ -16,10 +16,11 @@ const Item = ({ email,lname,fname }) => (
       {/* <Text style={styles.note}>{date}</Text> */}
     {/* <Button title='Add mark'> </Button> */}
     <Text>
-    Note :
-    <TextInput autoCompleteType='cc-exp-year'> </TextInput>
+    Note :</Text>
+    <TextInput autoCompleteType='cc-exp-year'
+     style={{ height: 40, borderColor: 'gray', borderWidth: 1, width:50, alignContent:'center',textAlign:'center' }}> </TextInput>
 
-    </Text>
+    
     </View>
   );
 
