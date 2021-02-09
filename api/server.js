@@ -7,6 +7,7 @@ require('dotenv').config()
 
 const authRoute = require('./routes/auth')
 const examsRoute = require('./routes/exams')
+const notesRoute = require('./routes/notes')
 mongoose.connect(process.env.DB,{
     useNewUrlParser: true, 
     useUnifiedTopology: true
@@ -30,7 +31,7 @@ app.use(function(req, res, next) {
 /* routes */
 app.use('/api/auth',authRoute)
 app.use('/api/exams',examsRoute)
-
+app.use('/api/notes',notesRoute)
 
 
 app.listen(8000,()=> console.log('listen to port'))

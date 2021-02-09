@@ -23,7 +23,7 @@ const exams = () => {
     );
     const getUser =  ()=> {
         
-         axios.get('http://192.168.1.106:8000/api/exams/profexams/'+profId).then(res=> {setExams(res.data);console.log(res.data)}).catch(err => console.log(err))
+         axios.get('http://192.168.43.239:8000/api/exams/profexams/'+profId).then(res=> {setExams(res.data);console.log(res.data)}).catch(err => console.log(err))
 
      }
     useEffect(  () => {

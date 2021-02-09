@@ -13,25 +13,15 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const Item = ({ email,lname,fname }) => (
     <TouchableOpacity style={styles.item}>
-      <Text style={styles.title}>Name :</Text> 
+     
       <Text style={styles.title_name}>{lname} {fname}  </Text>
-      <Text style={styles.note}>Email : {email}</Text>
-
-      
-      {/* <Text style={styles.note}>{date}</Text> */}
-    {/* <Button title='Add mark'> </Button> */}
-    <Text>
-    Note :
-    </Text>
-    {/* <TextInput autoCompleteType='cc-exp-year'
-     style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
-    > </TextInput> */}
-    <Input style={styles.metier}/>
+    
+    {/* <Input style={styles.metier} disabled/> */}
     
     </TouchableOpacity>
   );
 
-const uploadNotes = () => {
+const uploadNotes = ({navigation}) => {
 
     const prof_data = useContext(ProfContext)
 
@@ -39,12 +29,14 @@ const uploadNotes = () => {
 
 
     const renderItem = ({ item }) => (
+      <TouchableOpacity onPress={()=>navigation.navigate("Addnote",{iduser:item._id, idprof:profdata})}> 
         <Item 
-        email={item.email}  
-        date={item.date} 
+      
+    
         fname={item.fname}
         lname={item.lname}
         />
+        </TouchableOpacity>
       );
 
     // const user_data = useContext(UserContext)
