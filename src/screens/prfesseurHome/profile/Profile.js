@@ -19,7 +19,7 @@ const Profile = ({navigation}) => {
        let prof = await axios.get(`${REACT_URL}auth/prof/`+profId).then(res=> 
             {  
                 setProf(res.data) ;
-                console.log(res.data)
+                
             }).catch(err=>console.log(err))
     }
 
@@ -30,7 +30,7 @@ const Profile = ({navigation}) => {
     useEffect(() => {
        
         getProf();
-    }, [])
+    }, [prof])
     if(prof){
     return (
         <View style={styles.main_container}>     
@@ -42,16 +42,17 @@ const Profile = ({navigation}) => {
             </View>
             <View style={styles.form}>
                 
-            <Text style={styles.metier}>CNE : {prof.cnp}</Text>
-                <Text style={styles.metier}>Email : {prof.email}</Text>
-                <Text style={styles.metier}>First Name : {prof.fname}</Text> 
-                 <Text style={styles.metier}>Last Name : {prof.lname}</Text>
+            <Text style={styles.text}>CNP : <Text style={styles.metier}>  {prof.cnp}</Text></Text>
+                <Text style={styles.text}>Email : <Text style={styles.metier}>  {prof.email}</Text></Text>
+                <Text style={styles.text}>First Name : <Text style={styles.metier}>  {prof.fname}</Text></Text> 
+                 <Text style={styles.text}>Last Name : <Text style={styles.metier}>  {prof.lname}</Text></Text>
+                 <Text style={styles.text}>Status: <Text style={styles.metier}>  Professeur </Text></Text>
             
             </View>
                     
             <View style={styles.req}>
                 <TouchableOpacity  style= {{marginTop: 0, width: 140, justifyContent: 'center',alignItems:"center",backgroundColor : "#8174B3"}}
-                         rounded onPress={()=>updateprofile()}><Text style={{fontSize:18, color:"white"}}>Modifier</Text></TouchableOpacity>
+                         rounded onPress={()=>updateprofile()}><Text style={{fontSize:18, color:"white"}}>Update</Text></TouchableOpacity>
             </View>
         </View>
     )
@@ -146,10 +147,17 @@ const styles=StyleSheet.create({
     },
     metier:{
         color:"grey",
-        fontSize : 16,
+        fontSize : 18,
         padding :  4,
         marginLeft: 10
-    },form: {
+    },
+    text:{
+        color:"black",
+        fontSize : 18,
+        padding :  4,
+        marginLeft: 10
+    },
+    form: {
         padding: 30,
         flex: 1,
         marginLeft : 10

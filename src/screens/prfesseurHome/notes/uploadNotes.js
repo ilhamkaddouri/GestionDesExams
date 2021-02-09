@@ -6,10 +6,11 @@ import ImagePicker from 'react-native-image-picker';
 import axios from 'axios'
 import {REACT_URL} from '../../../constants/env'
 import background from '../../../shared/images/background1.png'
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
 const Item = ({ email,lname,fname }) => (
-    <View style={styles.item}>
+    <TouchableOpacity style={styles.item} onPress={()=>{}}>
       <Text style={styles.note}>Name : {lname} {fname} </Text>
 
       <Text style={styles.note}>Email : {email}</Text>
@@ -20,7 +21,7 @@ const Item = ({ email,lname,fname }) => (
     <TextInput autoCompleteType='cc-exp-year'> </TextInput>
 
     </Text>
-    </View>
+    </TouchableOpacity>
   );
 
 const uploadNotes = () => {

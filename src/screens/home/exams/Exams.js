@@ -6,12 +6,12 @@ import axios from 'axios'
 import {REACT_URL} from '../../../constants/env'
 
 const Item = ({ name,date,time }) => (
-    <View style={styles.item}>
-      <Text style={styles.title}>{name}</Text>
-      <Text style={styles.note}>{date}</Text>
-      <Text style={styles.note}>{time}</Text>
-    </View>
-  );
+  <View style={styles.item}>
+    <Text style={styles.title}>{name}</Text>
+    <Text style={styles.note}><Text style={styles.text}>Date : </Text>{date}</Text>
+    <Text style={styles.note}><Text style={styles.text}>Timing : </Text>{time}</Text>
+  </View>
+);
 const Exams = () => {
   const user_data = useContext(UserContext)
     const [exams,setExams]= useState()
@@ -29,7 +29,7 @@ const Exams = () => {
     return (
         <ImageBackground source={background} style={{flex:1}}>
             <View style={styles.container}>
-                <Text>Exams ^^ all exams</Text>
+                <Text>PlannedExams </Text>
                 <FlatList     
                     data={exams}
                     renderItem={renderItem}
@@ -40,15 +40,13 @@ const Exams = () => {
     )
 }
 const styles= StyleSheet.create({
-    container:{
-        flex:1,
-        alignItems:'center',
-        justifyContent: 'center',
-
-    },
-    lisview:{
-        
-        flex:2,
+  container: {
+    flex: 1,
+    
+  },
+  lisview:{
+    
+        flex:3,
         marginTop:"8%",
      
     },
@@ -68,5 +66,8 @@ const styles= StyleSheet.create({
     color :'#97D4A8',
     fontWeight :'bold'
   },
+  text:{
+    color:"black"
+  }
 })
 export default Exams

@@ -19,10 +19,10 @@ const updateProfile = ({navigation}) => {
    
   
     const getProf = async ()=> {
-       let prof = await axios.put(`${REACT_URL}auth/updateprof/`+profId).then(res=> 
+       let prof = await axios.get(`${REACT_URL}auth/prof/`+profId).then(res=> 
             {  
                 setProf(res.data) ;
-                console.log(res.data)
+                
             }).catch(err=>console.log(err))
     }
 
@@ -31,7 +31,7 @@ const updateProfile = ({navigation}) => {
         axios.put(`${REACT_URL}auth/updateprof/`+profId,newprof).then(res=> 
             {  
                 setProf(newprof) ;
-                
+                navigation.navigate('Profile')
             }).catch(err=>console.log(err))
     }
 
@@ -136,7 +136,7 @@ const styles=StyleSheet.create({
     },
     req:{
         flex:5,
-        marginTop : 70,
+        marginTop : "10%",
         alignItems : 'center',
         justifyContent:"center"
         
@@ -151,7 +151,7 @@ const styles=StyleSheet.create({
     },
     metier:{
         color:"grey",
-        fontSize : 16,
+        fontSize : 20,
         padding :  4,
         marginLeft: 10
     },form: {

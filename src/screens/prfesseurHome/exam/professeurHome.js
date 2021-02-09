@@ -59,7 +59,7 @@ const professeurHome = () => {
         };
         const handleTimeConfirm = (date) => {
           
-           setTime(moment(date).format("hh:mm").toString())
+           setTime(moment(date).format("HH:MM").toString())
            
             hideTimePicker();
         };
