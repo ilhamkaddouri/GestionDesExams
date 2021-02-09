@@ -5,6 +5,8 @@ import { Ionicons } from '@expo/vector-icons';
 import ProfileStack from '../home/profile/index'
 import ExamStack from '../prfesseurHome/exam/index' 
 import ExamsStack from '../prfesseurHome/exams/index'
+import NoteStack from '../prfesseurHome/notes/index'
+
 const Tab = createBottomTabNavigator()
 const HomePTabs = () => {
     return (
@@ -19,6 +21,8 @@ const HomePTabs = () => {
                 iconName = focused ? 'ios-menu' : 'ios-menu';
               }else if(route.name == 'Profile'){
                 iconName = focused ? 'ios-heart' : 'ios-heart';
+              }else if(route.name == 'Notes'){
+                iconName = focused ? 'ios-text' : 'ios-text';
               }
   
               // You can return any component that you like here!
@@ -33,6 +37,8 @@ const HomePTabs = () => {
             <Tab.Screen name='AjouterExam' component={ExamStack} />
             <Tab.Screen name='List' component={ExamsStack} />
             <Tab.Screen name='Profile' component={ProfileStack} />
+            <Tab.Screen name='Notes' component={NoteStack} />
+
         </Tab.Navigator>
     )
 }

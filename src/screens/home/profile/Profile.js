@@ -1,6 +1,6 @@
 import React,{useState,useContext,useEffect} from 'react'
 import { StyleSheet, Text, View, Image } from 'react-native';
-import {Button,Title ,Icon,Header,Left, Body  } from 'native-base';
+import {Button, Title ,Icon,Header,Left, Body  } from 'native-base';
 import { UserContext } from '../../../context/UserContext'
 import {REACT_URL} from '../../../constants/env.js'
 import img from '../../../shared/images/avatar.png'
@@ -54,7 +54,7 @@ const Profile = () => {
             </View>
                     
             <View style={styles.req}>
-                <Button  style= {{marginTop: 40, width: 140, justifyContent: 'center', backgroundColor : "#e41b23"}}
+                <Button  style= {{marginTop: 40, width: '100%', justifyContent: 'center', backgroundColor : "#e41b23"}}
                          rounded><Text style={{fontSize:18, color:"white"}}>Modifier</Text></Button>
             </View>
         </View>
@@ -63,7 +63,7 @@ const Profile = () => {
 else{
     return(
         <View>
-            <Text>Waiting</Text>
+            <Text>Waiting...</Text>
         </View>
     )
 }
