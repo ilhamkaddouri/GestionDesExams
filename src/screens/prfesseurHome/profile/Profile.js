@@ -1,72 +1,69 @@
 import React,{useState,useContext,useEffect} from 'react'
-import { StyleSheet, Text, View, Image } from 'react-native';
-import {Button, Title ,Icon,Header,Left, Body  } from 'native-base';
-import { UserContext } from '../../../context/UserContext'
+import { StyleSheet, Text, View, Image ,TouchableOpacity} from 'react-native';
+import {Title ,Icon,Header,Left, Body  } from 'native-base';
+import { Button } from 'react-native-elements';
+import { ProfContext } from '../../../context/ProfContext'
 import {REACT_URL} from '../../../constants/env.js'
 import img from '../../../shared/images/avatar.png'
 import axios from "axios"
-const Profile = () => {
-    const user_data = useContext(UserContext)
+import * as Progress from 'react-native-progress'
+const Profile = ({navigation}) => {
+    const prof_data = useContext(ProfContext)
 
-    // const id = user_data.userData.user;
-    const [user,setUser] = useState();
-    const [userId,setId] = useState(user_data.userData.user);
    
-    // console.log(userId);
-
-    const getUser = async ()=> {
-       let user = await axios.get(`${REACT_URL}auth/user/`+userId).then(res=> 
+    const [prof,setProf] = useState();
+    const [profId,setId] = useState(prof_data.profData.prof);
+   
+  
+    const getProf = async ()=> {
+       let prof = await axios.get(`${REACT_URL}auth/prof/`+profId).then(res=> 
             {  
-                setUser(res.data) ;
+                setProf(res.data) ;
                 console.log(res.data)
             }).catch(err=>console.log(err))
-        
-        console.log(user);
+    }
+
+    const updateprofile=()=>{
+        navigation.navigate('UProfile')
     }
 
     useEffect(() => {
-        // setId(user_data.userData.user);
-        // // console.log(userId);
-
-        //  axios.get(`${REACT_URL}auth/user/`+userId).then(res=> 
-        //     {  
-        //         setUser(res.data) ;
-        //     }).catch(err=>console.log(err))
-        // // console.log(stg);
-        getUser();
+       
+        getProf();
     }, [])
-    if(user){
+    if(prof){
     return (
         <View style={styles.main_container}>     
             <View style={styles.avatar}>
                 <Image style={styles.image} source={img}/>
             </View> 
             <View style={{alignItems:'center'}}>
-                <Text style={styles.name}>{user.fname} {user.lname}</Text>
+                <Text style={styles.name}>{prof.fname} {prof.lname}</Text>
             </View>
             <View style={styles.form}>
                 
-            <Text style={styles.metier}>CNE : {user.cne}</Text>
-                <Text style={styles.metier}>Email : {user.email}</Text>
-                <Text style={styles.metier}>First Name : {user.fname}</Text> 
-                 <Text style={styles.metier}>Last Name : {user.lname}</Text>
+            <Text style={styles.metier}>CNE : {prof.cnp}</Text>
+                <Text style={styles.metier}>Email : {prof.email}</Text>
+                <Text style={styles.metier}>First Name : {prof.fname}</Text> 
+                 <Text style={styles.metier}>Last Name : {prof.lname}</Text>
             
             </View>
                     
             <View style={styles.req}>
-
-                <Button  style= {{marginTop: 40, width: 140, justifyContent: 'center', backgroundColor : ""}}
-
-                         rounded><Text style={{fontSize:18, color:"white"}}>Modifier</Text></Button>
+                <TouchableOpacity  style= {{marginTop: 0, width: 140, justifyContent: 'center',alignItems:"center",backgroundColor : "#8174B3"}}
+                         rounded onPress={()=>updateprofile()}><Text style={{fontSize:18, color:"white"}}>Modifier</Text></TouchableOpacity>
             </View>
         </View>
     )
 }
 else{
     return(
-        <View>
-            <Text>Waiting...</Text>
-        </View>
+        
+       <View>
+           <Button  
+           title="Loading button" loading/>
+       </View>
+        
     )
 }
 
@@ -153,7 +150,7 @@ const styles=StyleSheet.create({
         padding :  4,
         marginLeft: 10
     },form: {
-        padding: 20,
+        padding: 30,
         flex: 1,
         marginLeft : 10
       },

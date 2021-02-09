@@ -13,25 +13,33 @@ router.get('/all',async (req,res)=>{
      }
 })
 
-router.post('/exam',verify,async (req,res)=>{
-     try{
-          const prof_id= req.prof;
+router.post('/exam',verify, (req,res)=>{
+     const prof_id= req.prof;
           
           const label= req.body.name;
           const examdae = req.body.date;
-
-          const exam = await new Exam({
+          const timed = req.body.time
+          const exam =  new Exam({
                professeur : prof_id,
                name : label,
-               date : examdae
+               date : examdae,
+               time: timed
 
           })
-
-          if(!exam) res.status(400).json({msg : "please enter your data"})
+     try{
           const savedExam = exam.save()
-          res.send(savedExam)
+          res.send({exam: "saved"+savedExam})
      }catch(err){
-          res.status(500).json({msgErr:err})
+          res.status(500).json({msgErr:err+"erooooooooooooooooooor"})
+     }
+})
+
+router.get('/profexams/:profid',async (req,res)=>{
+     try{
+          const exams =  await Exam.find({professeur : req.params.profid})
+          res.send(exams)
+     }catch(err){
+          res.status(500).send({msg:err})
      }
 })
 module.exports = router

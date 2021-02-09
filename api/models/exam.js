@@ -10,13 +10,14 @@ const ExamSchema = new mongoose.Schema({
         ref : 'professeur'
     },
     date :{
-        type : Date,
+        type : String,
         required : true
     },
-    note:{
-        type :  mongoose.Schema.Types.ObjectId,
-        ref :'note'
-    },
+    time:{
+        type: String,
+        required: true
+    }
+
 })
 
 module.exports = mongoose.model('exam',ExamSchema)

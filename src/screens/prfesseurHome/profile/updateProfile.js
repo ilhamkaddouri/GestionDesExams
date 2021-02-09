@@ -1,72 +1,74 @@
 import React,{useState,useContext,useEffect} from 'react'
-import { StyleSheet, Text, View, Image } from 'react-native';
-import {Button, Title ,Icon,Header,Left, Body  } from 'native-base';
-import { UserContext } from '../../../context/UserContext'
+import { StyleSheet, Text, View, Image ,TouchableOpacity} from 'react-native';
+import {Title ,Icon,Header,Left, Body  } from 'native-base';
+import { Button,Input } from 'react-native-elements';
+
+import { ProfContext } from '../../../context/ProfContext'
 import {REACT_URL} from '../../../constants/env.js'
 import img from '../../../shared/images/avatar.png'
 import axios from "axios"
-const Profile = () => {
-    const user_data = useContext(UserContext)
+import * as Progress from 'react-native-progress'
+const updateProfile = ({navigation}) => {
+    const prof_data = useContext(ProfContext)
 
-    // const id = user_data.userData.user;
-    const [user,setUser] = useState();
-    const [userId,setId] = useState(user_data.userData.user);
+    const [fname,setNom]= useState()
+    const [lname,setPrenom]= useState()
+    const [email,setEmail]= useState()
+    const [prof,setProf] = useState();
+    const [profId,setId] = useState(prof_data.profData.prof);
    
-    // console.log(userId);
-
-    const getUser = async ()=> {
-       let user = await axios.get(`${REACT_URL}auth/user/`+userId).then(res=> 
+  
+    const getProf = async ()=> {
+       let prof = await axios.put(`${REACT_URL}auth/updateprof/`+profId).then(res=> 
             {  
-                setUser(res.data) ;
+                setProf(res.data) ;
                 console.log(res.data)
             }).catch(err=>console.log(err))
-        
-        console.log(user);
+    }
+
+    const updateprofile=()=>{
+        const newprof = {fname,lname,email}
+        axios.put(`${REACT_URL}auth/updateprof/`+profId,newprof).then(res=> 
+            {  
+                setProf(res.data) ;
+                console.log(res.data)
+            }).catch(err=>console.log(err))
     }
 
     useEffect(() => {
-        // setId(user_data.userData.user);
-        // // console.log(userId);
-
-        //  axios.get(`${REACT_URL}auth/user/`+userId).then(res=> 
-        //     {  
-        //         setUser(res.data) ;
-        //     }).catch(err=>console.log(err))
-        // // console.log(stg);
-        getUser();
+       
+        getProf();
     }, [])
-    if(user){
+    if(prof){
     return (
         <View style={styles.main_container}>     
             <View style={styles.avatar}>
                 <Image style={styles.image} source={img}/>
             </View> 
-            <View style={{alignItems:'center'}}>
-                <Text style={styles.name}>{user.fname} {user.lname}</Text>
-            </View>
+           
             <View style={styles.form}>
                 
-            <Text style={styles.metier}>CNE : {user.cne}</Text>
-                <Text style={styles.metier}>Email : {user.email}</Text>
-                <Text style={styles.metier}>First Name : {user.fname}</Text> 
-                 <Text style={styles.metier}>Last Name : {user.lname}</Text>
+                <Input style={styles.metier} defaultValue={prof.email} onChangeText={(value)=>setEmail(value)}/>
+                <Input style={styles.metier} defaultValue={prof.fname} onChangeText={(value)=> setNom(value)}/>
+                 <Input style={styles.metier} defaultValue={prof.lname} onChangeText={(value)=>{setPrenom(value)}}/>
             
             </View>
                     
             <View style={styles.req}>
-
-                <Button  style= {{marginTop: 40, width: 140, justifyContent: 'center', backgroundColor : ""}}
-
-                         rounded><Text style={{fontSize:18, color:"white"}}>Modifier</Text></Button>
+                <TouchableOpacity  style= {{marginTop: 0, width: 140, justifyContent: 'center',alignItems:"center", backgroundColor : "#8174B3"}}
+                         rounded onPress={()=>{updateprofile()}}><Text style={{fontSize:18, color:"white"}}>Submit</Text></TouchableOpacity>
             </View>
         </View>
     )
 }
 else{
     return(
-        <View>
-            <Text>Waiting...</Text>
-        </View>
+        
+       <View>
+           <Button  
+           title="Loading button" loading/>
+       </View>
+        
     )
 }
 
@@ -153,9 +155,9 @@ const styles=StyleSheet.create({
         padding :  4,
         marginLeft: 10
     },form: {
-        padding: 20,
+        padding: 30,
         flex: 1,
         marginLeft : 10
       },
 })
-export default Profile
+export default updateProfile
