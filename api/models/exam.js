@@ -3,11 +3,9 @@ const mongoose = require('mongoose')
 const ExamSchema = new mongoose.Schema({
     name:{
         type:String,
-        required : true,
-        
+        required : true,     
     },
-    professeur:
-    {
+    professeur:{
         type: mongoose.Schema.Types.ObjectId,
         ref : 'professeur'
     },
@@ -19,6 +17,7 @@ const ExamSchema = new mongoose.Schema({
         type: String,
         required: true
     }
+
 })
 
 module.exports = mongoose.model('exam',ExamSchema)

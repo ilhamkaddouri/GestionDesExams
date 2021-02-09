@@ -18,17 +18,19 @@ const Exams = () => {
   const renderItem = ({ item }) => (
     <Item name={item.name}  date={item.date} time={item.time}/>
   );
-  console.log("user"+user_data.userData.user);
+  // console.log("user"+user_data.userData.user);
     useEffect(() => {
-       axios.get(`${REACT_URL}exams/all`).then(res=> {setExams(res.data);console.log(exams)}).catch(err => console.log(err))
+       axios.get(`${REACT_URL}exams/all`)
+       .then(res=> 
+        {setExams(res.data);console.log(exams)})
+        .catch(err => console.log(err))
     }, [])
 
     return (
         <ImageBackground source={background} style={{flex:1}}>
             <View style={styles.container}>
                 <Text>Exams ^^ all exams</Text>
-                <FlatList
-                    
+                <FlatList     
                     data={exams}
                     renderItem={renderItem}
                     keyExtractor={item => item.id}

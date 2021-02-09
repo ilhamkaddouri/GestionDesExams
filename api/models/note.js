@@ -1,10 +1,10 @@
 const mongoose = require('mongoose')
 
 const NoteSchema = new mongoose.Schema({
-    exam:{
-        type :  mongoose.Schema.Types.ObjectId,
-        ref :'exam'
-    },
+    // exam:{
+    //     type :  mongoose.Schema.Types.ObjectId,
+    //     ref :'exam'
+    // },
     prof:{
         type : mongoose.Schema.Types.ObjectId,
         ref:'prof'
@@ -14,5 +14,7 @@ const NoteSchema = new mongoose.Schema({
         required: true
     }
 })
+
+
 
 module.exports = mongoose.model('note',NoteSchema)
